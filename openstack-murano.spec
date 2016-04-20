@@ -9,8 +9,8 @@
 %endif
 
 Name:          openstack-%{pypi_name}
-Version:       2.0.0
-Release:       1%{?dist}
+Version:       XXX
+Release:       XXX
 Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
@@ -255,11 +255,3 @@ exit 0
 %doc doc/build/html
 
 %changelog
-* Wed Apr 20 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.0.0-1
-- Update to 2.0.0
-
-* Wed Jan 13 2016 2015 Marcos Fermin Lobo <marcos.fermin.lobo@cern.ch> - 0.1.0-1
-- First RPM
-
-* Tue Jan 12 2016 Daniil <asteroid566@gmail.com> - 0.1.0-0
-- Start spec file and services files
