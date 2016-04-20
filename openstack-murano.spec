@@ -9,7 +9,7 @@
 %endif
 
 Name:          openstack-%{pypi_name}
-Version:       1.0.2
+Version:       2.0.0
 Release:       1%{?dist}
 Summary:       OpenStack Murano Service
 
@@ -255,6 +255,9 @@ exit 0
 %doc doc/build/html
 
 %changelog
+* Wed Apr 20 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.0.0-1
+- Update to 2.0.0
+
 * Wed Jan 13 2016 2015 Marcos Fermin Lobo <marcos.fermin.lobo@cern.ch> - 0.1.0-1
 - First RPM
 
