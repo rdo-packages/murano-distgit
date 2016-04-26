@@ -10,7 +10,7 @@
 
 Name:          openstack-%{pypi_name}
 Version:       2.0.0
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
@@ -255,6 +255,9 @@ exit 0
 %doc doc/build/html
 
 %changelog
+* Tue Apr 26 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 2.0.0-2
+- Fix cache directory ownership in packages
+
 * Wed Apr 20 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.0.0-1
 - Update to 2.0.0
 
