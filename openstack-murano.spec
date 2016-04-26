@@ -223,7 +223,7 @@ exit 0
 %files api
 %doc README.rst
 %license LICENSE
-%{_localstatedir}/cache/murano
+%{_localstatedir}/cache/murano/*
 %{_bindir}/murano-api
 %{_unitdir}/murano-api.service
 
