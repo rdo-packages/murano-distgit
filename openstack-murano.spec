@@ -43,6 +43,8 @@ BuildRequires: python-sphinx
 BuildRequires: python-sphinxcontrib-httpdomain
 BuildRequires: pyOpenSSL
 BuildRequires: systemd
+# Required to compile translation files
+BuildRequires: python-babel
 
 %description
 Murano Project introduces an application catalog service
@@ -138,6 +140,8 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 
 %build
 %{__python2} setup.py build
+# Generate i18n files
+%{__python2} setup.py compile_catalog -d build/lib/%{pypi_name}/locale
 # Generate sample config and add the current directory to PYTHONPATH so
 # oslo-config-generator doesn't skip heat's entry points.
 PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/murano.conf
@@ -180,7 +184,16 @@ install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/lo
 cp -r %{_builddir}/%{pypi_name}-%{upstream_version}/meta %{buildroot}%{_localstatedir}/cache/murano
 zip -r %{buildroot}%{_localstatedir}/cache/murano/meta/io.murano.zip .
 
-%files common
+# Install i18n .mo files (.po and .pot are not required)
+install -d -m 755 %{buildroot}%{_datadir}
+rm -f %{buildroot}%{python2_sitelib}/%{pypi_name}/locale/*/LC_*/%{pypi_name}*po
+rm -f %{buildroot}%{python2_sitelib}/%{pypi_name}/locale/*pot
+mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/locale
+
+# Find language files
+%find_lang %{pypi_name} --all-name
+
+%files common -f %{pypi_name}.lang
 %license LICENSE
 %{python2_sitelib}/murano*
 %{_bindir}/murano-manage
