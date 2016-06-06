@@ -145,6 +145,7 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 # Generate sample config and add the current directory to PYTHONPATH so
 # oslo-config-generator doesn't skip heat's entry points.
 PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/murano.conf
+PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/murano-cfapi.conf
 
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
@@ -179,6 +180,8 @@ install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/ne
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-paste.ini %{buildroot}%{_sysconfdir}/murano/murano-paste.ini
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/policy.json %{buildroot}%{_sysconfdir}/murano/policy.json
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/logging.conf.sample %{buildroot}%{_sysconfdir}/murano/logging.conf
+install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-cfapi.conf.sample %{buildroot}%{_sysconfdir}/murano/murano-cfapi.conf
+install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-cfapi-paste.ini %{buildroot}%{_sysconfdir}/murano/murano-cfapi-paste.ini
 
 # Copy 'meta' folder(murano meta packages written in muranoPL with execution plan main minimal logic)
 cp -r %{_builddir}/%{pypi_name}-%{upstream_version}/meta %{buildroot}%{_localstatedir}/cache/murano
@@ -199,6 +202,7 @@ mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/lo
 %{_bindir}/murano-manage
 %{_bindir}/murano-db-manage
 %{_bindir}/murano-test-runner
+%{_bindir}/murano-cfapi-db-manage
 %dir %attr(0755,murano,root) %{_localstatedir}/log/murano
 %dir %attr(0755,murano,root) %{_localstatedir}/run/murano
 %dir %attr(0755,murano,root) %{_localstatedir}/cache/murano
@@ -209,6 +213,8 @@ mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/lo
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/netconfig.yaml.sample
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/policy.json
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/logging.conf
+%config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/murano-cfapi.conf
+%config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/murano-cfapi-paste.ini
 
 %pre common
 USERNAME=murano
