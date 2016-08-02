@@ -131,6 +131,13 @@ Summary: Documentation for OpenStack Murano services
 This package contains documentation files for Murano.
 %endif
 
+%package -n python-murano-tests
+Summary:        Murano tests
+Requires:       %{name}-common = %{version}-%{release}
+
+%description -n python-murano-tests
+This package contains the murano test files.
+
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version}
 
@@ -199,6 +206,9 @@ mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/lo
 %files common -f %{pypi_name}.lang
 %license LICENSE
 %{python2_sitelib}/murano*
+%{python2_sitelib}/murano-*.egg-info
+%exclude %{python2_sitelib}/murano/tests
+%exclude %{python2_sitelib}/murano_tempest_tests
 %{_bindir}/murano-manage
 %{_bindir}/murano-db-manage
 %{_bindir}/murano-test-runner
@@ -272,5 +282,10 @@ exit 0
 
 %files doc
 %doc doc/build/html
+
+%files -n python-murano-tests
+%license LICENSE
+%{python2_sitelib}/murano/tests
+%{python2_sitelib}/murano_tempest_tests
 
 %changelog
