@@ -200,6 +200,9 @@ rm -f %{buildroot}%{python2_sitelib}/%{pypi_name}/locale/*/LC_*/%{pypi_name}*po
 rm -f %{buildroot}%{python2_sitelib}/%{pypi_name}/locale/*pot
 mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/locale
 
+# Install 'extra' folder (murano-tempest-plugin extra files required for tests)
+cp -r %{_builddir}/%{pypi_name}-%{upstream_version}/murano_tempest_tests/extras %{buildroot}%{python2_sitelib}/murano_tempest_tests
+
 # Find language files
 %find_lang %{pypi_name} --all-name
 
