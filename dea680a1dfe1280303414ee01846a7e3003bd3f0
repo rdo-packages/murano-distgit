@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_f74d02c6",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2016-09-09T13:32:19Z",
+      "side": 1,
+      "message": "So, I guess this is trying to fix:\n\n     http://logs.openstack.org/36/250436/65/check/gate-puppet-openstack-integration-3-scenario003-tempest-centos-7/5c9f0ac/console.html#_2016-09-06_16_33_02_908332\n\nTempest is trying to read files directly out of /usr/lib/python2.7/site-packages/murano_tempest_tests/ and that doesn\u0027t really make sense. Configuration should be shipped to /etc/* or /usr/share/* and then read from there. I think this is worthy of being tracked as an upstream bug IMO.",
+      "revId": "dea680a1dfe1280303414ee01846a7e3003bd3f0",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
