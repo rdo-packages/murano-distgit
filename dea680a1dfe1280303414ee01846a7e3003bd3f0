@@ -16,6 +16,24 @@
       "revId": "dea680a1dfe1280303414ee01846a7e3003bd3f0",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_17e2669f",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2016-09-09T13:43:11Z",
+      "side": 1,
+      "message": "Ok, so what the tempest plugin really attempts to do is to copy from the source directory to a temporary directory and then use that temporary directory for reading and writing configuration:\n\n     https://github.com/openstack/murano/blob/1833842b734fc79a82c4711b3c92fe1987eaa495/murano_tempest_tests/utils.py#L53\n\nIt\u0027s not as bad but still kind of weird.",
+      "parentUuid": "facab960_f74d02c6",
+      "revId": "dea680a1dfe1280303414ee01846a7e3003bd3f0",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
