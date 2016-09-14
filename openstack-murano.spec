@@ -172,7 +172,7 @@ popd
 
 mkdir -p %{buildroot}/var/log/murano
 mkdir -p %{buildroot}/var/run/murano
-mkdir -p %{buildroot}/var/cache/murano
+mkdir -p %{buildroot}/var/cache/murano/meta
 mkdir -p %{buildroot}/etc/murano/
 # install systemd unit files
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/murano-api.service
@@ -190,10 +190,10 @@ install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/lo
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-cfapi.conf.sample %{buildroot}%{_sysconfdir}/murano/murano-cfapi.conf
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-cfapi-paste.ini %{buildroot}%{_sysconfdir}/murano/murano-cfapi-paste.ini
 
-# Copy 'meta' folder(murano meta packages written in muranoPL with execution plan main minimal logic)
-cp -r %{_builddir}/%{pypi_name}-%{upstream_version}/meta %{buildroot}%{_localstatedir}/cache/murano
+# Creating murano core library archive(murano meta packages written in muranoPL with execution plan main minimal logic)
+pushd meta/io.murano
 zip -r %{buildroot}%{_localstatedir}/cache/murano/meta/io.murano.zip .
-
+popd
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
 rm -f %{buildroot}%{python2_sitelib}/%{pypi_name}/locale/*/LC_*/%{pypi_name}*po
