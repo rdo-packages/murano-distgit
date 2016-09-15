@@ -15,7 +15,7 @@ Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
 URL:           https://pypi.python.org/pypi/murano
-Source0:       https://pypi.python.org/packages/source/m/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:       https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 Source1:       openstack-murano-api.service
 Source2:       openstack-murano-engine.service
 Source3:       openstack-murano.logrotate
