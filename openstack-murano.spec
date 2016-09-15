@@ -52,45 +52,48 @@ Murano Project introduces an application catalog service
 # MURANO-COMMON
 %package common
 Summary: Murano common
-Requires:      python-alembic >= 0.8.0
-Requires:      python-babel >= 1.3
-Requires:      python-eventlet >= 0.17.4
+Requires:      python-alembic >= 0.8.4
+Requires:      python-babel >= 2.3.4
+Requires:      python-debtcollector >= 1.2.0
+Requires:      python-eventlet >= 0.18.2
 Requires:      python-iso8601 >= 0.1.9
 Requires:      python-jsonpatch >= 1.1
 Requires:      python-jsonschema >= 2.0.0
-Requires:      python-keystonemiddleware >= 2.0.0
-Requires:      python-kombu >= 3.0.7
+Requires:      python-keystonemiddleware >= 4.0.0
+Requires:      python-keystoneauth1 >= 2.10.0
+Requires:      python-kombu >= 3.0.25
 Requires:      python-netaddr >= 0.7.12
-Requires:      python-oslo-config >= 2:2.3.0
-Requires:      python-oslo-context >= 0.2.0
-Requires:      python-oslo-db >= 2.4.1
-Requires:      python-oslo-i18n >= 1.5.0
-Requires:      python-oslo-log >= 1.8.0
-Requires:      python-oslo-messaging >= 1.16.0
-Requires:      python-oslo-middleware >= 2.8.0
-Requires:      python-oslo-policy >= 0.5.0
-Requires:      python-oslo-serialization >= 1.4.0
-Requires:      python-oslo-service >= 0.7.0
-Requires:      python-oslo-utils >= 2.0.0
+Requires:      python-oslo-concurrency >= 3.8.0
+Requires:      python-oslo-config >= 2:3.14.0
+Requires:      python-oslo-context >= 2.9.0
+Requires:      python-oslo-db >= 4.10.0
+Requires:      python-oslo-i18n >= 2.1.0
+Requires:      python-oslo-log >= 1.14.0
+Requires:      python-oslo-messaging >= 5.2.0
+Requires:      python-oslo-middleware >= 3.0.0
+Requires:      python-oslo-policy >= 1.9.0
+Requires:      python-oslo-serialization >= 1.10.0
+Requires:      python-oslo-service >= 1.10.0
+Requires:      python-oslo-utils >= 3.16.0
 Requires:      python-paste
 Requires:      python-paste-deploy >= 1.5.0
 Requires:      python-pbr >= 1.6
 Requires:      python-psutil >= 1.1.1
-Requires:      python-congressclient >= 1.0.0
-Requires:      python-heatclient >= 0.3.0
-Requires:      python-keystoneclient >= 1:1.6.0
-Requires:      python-mistralclient >= 1.0.0
-Requires:      python-muranoclient >= 0.7.0
-Requires:      python-neutronclient >= 2.6.0
+Requires:      python-congressclient >= 1.3.0
+Requires:      python-heatclient >= 1.4.0
+Requires:      python-keystoneclient >= 1:2.0.0
+Requires:      python-mistralclient >= 2.0.0
+Requires:      python-muranoclient >= 0.8.2
+Requires:      python-neutronclient >= 5.1.0
 Requires:      PyYAML >= 3.1.0
 Requires:      python-retrying >= 1.2.3
 Requires:      python-routes >= 1.12.3
 Requires:      python-semantic_version >= 2.3.1
 Requires:      python-six >= 1.9.0
-Requires:      python-stevedore >= 1.5.0
-Requires:      python-sqlalchemy >= 0.9.9
+Requires:      python-stevedore >= 1.16.0
+Requires:      python-sqlalchemy >= 1.0.10
 Requires:      python-webob >= 1.2.3
-Requires:      python-yaql >= 1.0.0
+Requires:      python-yaql >= 1.1.0
 Requires:      %{name}-doc = %{version}-%{release}
 
 %description common
