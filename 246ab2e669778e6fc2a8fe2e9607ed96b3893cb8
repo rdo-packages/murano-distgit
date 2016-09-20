@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_ea3ee928",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-09-20T22:11:18Z",
+      "side": 1,
+      "message": "Wait, in http://buildlogs.centos.org/centos/7/cloud/x86_64/rdo-trunk-master-tested/python-murano-tests-3.0.0-0.20160916024326.62f1a0f.el7.centos.noarch.rpm\nthere is\n/usr/lib/python2.7/site-packages/murano_tempest_tests/extras/\nand all subfolders, where did you see it missing?",
+      "revId": "246ab2e669778e6fc2a8fe2e9607ed96b3893cb8",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
