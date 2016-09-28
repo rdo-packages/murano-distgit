@@ -1,4 +1,4 @@
-%global milestone .0rc1
+%global milestone .0rc2
 %global pypi_name murano
 
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
@@ -11,14 +11,14 @@
 
 Name:          openstack-%{pypi_name}
 Version:       3.0.0
-Release:       0.1%{?milestone}%{?dist}
+Release:       0.2%{?milestone}%{?dist}
 Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
 URL:           https://pypi.python.org/pypi/murano
 Source0:       https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 #
-# patches_base=3.0.0.0rc1
+# patches_base=3.0.0.0rc2
 #
 
 Source1:       openstack-murano-api.service
@@ -297,6 +297,9 @@ exit 0
 %{python2_sitelib}/murano_tempest_tests
 
 %changelog
+* Thu Sep 29 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.0.0-0.2.0rc2
+- Update to 3.0.0.0rc2
+
 * Fri Sep 16 2016 Alfredo Moralejo <amoralej@redhat.com> 3.0.0-0.1
 - Update to 3.0.0.0rc1
 
