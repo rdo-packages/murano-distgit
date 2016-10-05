@@ -292,3 +292,4 @@ exit 0
 %{python2_sitelib}/murano_tempest_tests
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/murano/commit/?id=93bd290c8dcfd0aee394eca5072ea7d9f7ebb29c
