@@ -9,8 +9,8 @@
 %endif
 
 Name:          openstack-%{pypi_name}
-Version:       XXX
-Release:       XXX
+Version:       3.2.0
+Release:       1%{?dist}
 Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
@@ -300,3 +300,6 @@ exit 0
 %{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
+* Wed Feb 15 2017 Alfredo Moralejo <amoralej@redhat.com> 3.2.0-1
+- Update to 3.2.0
+
