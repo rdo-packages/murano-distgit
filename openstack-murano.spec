@@ -223,7 +223,7 @@ mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/lo
 %{_bindir}/murano-db-manage
 %{_bindir}/murano-test-runner
 %{_bindir}/murano-cfapi-db-manage
-%dir %attr(0755,murano,root) %{_localstatedir}/log/murano
+%dir %attr(0750,murano,root) %{_localstatedir}/log/murano
 %dir %attr(0755,murano,root) %{_localstatedir}/run/murano
 %dir %attr(0755,murano,root) %{_localstatedir}/cache/murano
 %dir %attr(0755,murano,root) %{_sysconfdir}/murano
