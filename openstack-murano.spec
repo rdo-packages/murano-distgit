@@ -23,6 +23,7 @@ Source4:       openstack-murano-cf-api.service
 
 BuildArch:     noarch
 
+BuildRequires: git
 BuildRequires: python2-devel
 BuildRequires: python-setuptools
 BuildRequires: python-jsonschema >= 2.0.0
@@ -143,7 +144,7 @@ Requires:       %{name}-common = %{version}-%{release}
 This package contains the murano test files.
 
 %prep
-%autosetup -n %{pypi_name}-%{upstream_version}
+%autosetup -S git -n %{pypi_name}-%{upstream_version}
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
