@@ -215,7 +215,7 @@ mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/lo
 
 %files common -f %{pypi_name}.lang
 %license LICENSE
-%{python2_sitelib}/murano*
+%{python2_sitelib}/murano
 %{python2_sitelib}/murano-*.egg-info
 %exclude %{python2_sitelib}/murano/tests
 %exclude %{python2_sitelib}/murano_tempest_tests
@@ -265,6 +265,7 @@ exit 0
 %license LICENSE
 %{_localstatedir}/cache/murano/*
 %{_bindir}/murano-api
+%{_bindir}/murano-wsgi-api
 %{_unitdir}/murano-api.service
 
 %post api
