@@ -302,3 +302,4 @@ exit 0
 %{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/murano/commit/?id=6b1fb69fb016223a693a392b7964e0d27d11f7a4
