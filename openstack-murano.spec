@@ -195,7 +195,6 @@ cd %{_builddir}/%{pypi_name}-%{upstream_version} && oslo-config-generator --conf
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano.conf.sample %{buildroot}%{_sysconfdir}/murano/murano.conf
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/netconfig.yaml.sample %{buildroot}%{_sysconfdir}/murano/netconfig.yaml.sample
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-paste.ini %{buildroot}%{_sysconfdir}/murano/murano-paste.ini
-install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/policy.json %{buildroot}%{_sysconfdir}/murano/policy.json
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/logging.conf.sample %{buildroot}%{_sysconfdir}/murano/logging.conf
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-cfapi.conf.sample %{buildroot}%{_sysconfdir}/murano/murano-cfapi.conf
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-cfapi-paste.ini %{buildroot}%{_sysconfdir}/murano/murano-cfapi-paste.ini
@@ -232,7 +231,6 @@ mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/lo
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/murano.conf
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/murano-paste.ini
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/netconfig.yaml.sample
-%config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/policy.json
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/logging.conf
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/murano-cfapi.conf
 %config(noreplace) %attr(-, root, murano) %{_sysconfdir}/murano/murano-cfapi-paste.ini
