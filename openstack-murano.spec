@@ -37,7 +37,7 @@ BuildRequires: python-oslo-middleware
 BuildRequires: python-oslo-policy
 BuildRequires: python-oslo-serialization
 BuildRequires: python-oslo-service
-BuildRequires: python-oslo-sphinx
+BuildRequires: python-openstackdocstheme
 BuildRequires: python-pbr >= 1.8
 BuildRequires: python-routes >= 1.12.3
 BuildRequires: python-sphinx
