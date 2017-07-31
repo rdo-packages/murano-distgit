@@ -42,6 +42,7 @@ BuildRequires: python-pbr >= 1.8
 BuildRequires: python-routes >= 1.12.3
 BuildRequires: python-sphinx
 BuildRequires: python-sphinxcontrib-httpdomain
+BuildRequires: python-castellan
 BuildRequires: pyOpenSSL
 BuildRequires: systemd
 # Required to compile translation files
@@ -96,6 +97,7 @@ Requires:      python-sqlalchemy >= 1.0.10
 Requires:      python-tenacity >= 3.2.1
 Requires:      python-webob >= 1.6.0
 Requires:      python-yaql >= 1.1.0
+Requires:      python-castellan >= 0.7.0
 Requires:      %{name}-doc = %{version}-%{release}
 
 %description common
