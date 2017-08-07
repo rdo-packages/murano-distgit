@@ -170,7 +170,6 @@ PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/mur
 %py2_entrypoint %{service} %{service}
 
 # DOCs
-export PYTHONPATH="$( pwd ):$PYTHONPATH"
 
 pushd doc
 
