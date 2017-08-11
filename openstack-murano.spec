@@ -38,8 +38,8 @@ BuildRequires: python-oslo-policy
 BuildRequires: python-oslo-serialization
 BuildRequires: python-oslo-service
 BuildRequires: python-openstackdocstheme
-BuildRequires: python-pbr >= 1.8
-BuildRequires: python-routes >= 1.12.3
+BuildRequires: python-pbr >= 2.0.0
+BuildRequires: python-routes >= 2.3.1
 BuildRequires: python-sphinx
 BuildRequires: python-sphinxcontrib-httpdomain
 BuildRequires: python-castellan
@@ -54,7 +54,7 @@ Murano Project introduces an application catalog service
 # MURANO-COMMON
 %package common
 Summary: Murano common
-Requires:      python-alembic >= 0.8.4
+Requires:      python-alembic >= 0.8.7
 Requires:      python-babel >= 2.3.4
 Requires:      python-debtcollector >= 1.2.0
 Requires:      python-eventlet >= 0.18.2
@@ -62,40 +62,39 @@ Requires:      python-iso8601 >= 0.1.9
 Requires:      python-jsonpatch >= 1.1
 Requires:      python-jsonschema >= 2.0.0
 Requires:      python-keystonemiddleware >= 4.12.0
-Requires:      python-keystoneauth1 >= 2.18.0
-Requires:      python-kombu >= 3.0.25
-Requires:      python-netaddr >= 0.7.12
+Requires:      python-keystoneauth1 >= 3.1.0
+Requires:      python-kombu >= 1:4.0.0
+Requires:      python-netaddr >= 0.7.13
 Requires:      python-oslo-concurrency >= 3.8.0
-Requires:      python-oslo-config >= 2:3.14.0
-Requires:      python-oslo-context >= 2.9.0
-Requires:      python-oslo-db >= 4.15.0
+Requires:      python-oslo-config >= 2:4.0.0
+Requires:      python-oslo-context >= 2.14.0
+Requires:      python-oslo-db >= 4.24.0
 Requires:      python-oslo-i18n >= 2.1.0
-Requires:      python-oslo-log >= 3.11.0
-Requires:      python-oslo-messaging >= 5.14.0
-Requires:      python-oslo-middleware >= 3.0.0
-Requires:      python-oslo-policy >= 1.17.0
+Requires:      python-oslo-log >= 3.22.0
+Requires:      python-oslo-messaging >= 5.24.2
+Requires:      python-oslo-middleware >= 3.27.0
+Requires:      python-oslo-policy >= 1.23.0
 Requires:      python-oslo-serialization >= 1.10.0
 Requires:      python-oslo-service >= 1.10.0
-Requires:      python-oslo-utils >= 3.18.0
+Requires:      python-oslo-utils >= 3.20.0
 Requires:      python-paste
 Requires:      python-paste-deploy >= 1.5.0
-Requires:      python-pbr >= 1.6
-Requires:      python-psutil >= 1.1.1
+Requires:      python-pbr >= 2.0.0
+Requires:      python-psutil >= 3.2.2
 Requires:      python-congressclient >= 1.3.0
 Requires:      python-heatclient >= 1.6.1
 Requires:      python-keystoneclient >= 1:3.8.0
-Requires:      python-mistralclient >= 2.0.0
+Requires:      python-mistralclient >= 3.1.0
 Requires:      python-muranoclient >= 0.8.2
-Requires:      python-neutronclient >= 5.1.0
+Requires:      python-neutronclient >= 6.3.0
 Requires:      PyYAML >= 3.10
-Requires:      python-retrying >= 1.2.3
-Requires:      python-routes >= 1.12.3
+Requires:      python-routes >= 2.3.1
 Requires:      python-semantic_version >= 2.3.1
 Requires:      python-six >= 1.9.0
-Requires:      python-stevedore >= 1.17.1
+Requires:      python-stevedore >= 1.20.0
 Requires:      python-sqlalchemy >= 1.0.10
 Requires:      python-tenacity >= 3.2.1
-Requires:      python-webob >= 1.6.0
+Requires:      python-webob >= 1.7.1
 Requires:      python-yaql >= 1.1.0
 Requires:      python-castellan >= 0.7.0
 Requires:      %{name}-doc = %{version}-%{release}
