@@ -45,6 +45,7 @@ BuildRequires: python-sphinxcontrib-httpdomain
 BuildRequires: python-castellan
 BuildRequires: pyOpenSSL
 BuildRequires: systemd
+BuildRequires: openstack-macros
 # Required to compile translation files
 BuildRequires: python-babel
 
@@ -149,7 +150,7 @@ This package contains the murano test files.
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
-rm -rf {test-,}requirements.txt tools/{pip,test}-requires
+%py_req_cleanup
 
 %build
 %{__python2} setup.py build
