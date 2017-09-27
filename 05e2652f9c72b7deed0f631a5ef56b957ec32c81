@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_edb52132",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-09-27T15:00:32Z",
+      "side": 1,
+      "message": "you need to remove this pushd to use setyp.py.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 9
+      },
+      "revId": "05e2652f9c72b7deed0f631a5ef56b957ec32c81",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_0d827552",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-09-27T15:00:32Z",
+      "side": 1,
+      "message": "also remove popd",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "05e2652f9c72b7deed0f631a5ef56b957ec32c81",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_2d873963",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-09-27T15:00:32Z",
+      "side": 1,
+      "message": "Could you add the with_doc conditional here also?",
+      "revId": "05e2652f9c72b7deed0f631a5ef56b957ec32c81",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
