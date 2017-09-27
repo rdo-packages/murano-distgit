@@ -169,16 +169,13 @@ PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/mur
 %py2_entrypoint %{service} %{service}
 
 # DOCs
-
-pushd doc
-
 %if 0%{?with_doc}
-SPHINX_DEBUG=1 sphinx-build -b html source build/html
-# Fix hidden-file-or-dir warnings
-rm -fr build/html/.doctrees build/html/.buildinfo
-%endif
 
-popd
+SPHINX_DEBUG=1 %{__python2} setup.py build_sphinx -b html
+# Fix hidden-file-or-dir warnings
+rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
+
+%endif
 
 mkdir -p %{buildroot}/var/log/murano
 mkdir -p %{buildroot}/var/run/murano
@@ -290,8 +287,11 @@ exit 0
 %postun cf-api
 %systemd_postun_with_restart murano-cf-api.service
 
+%if 0%{?with_doc}
 %files doc
+%license LICENSE
 %doc doc/build/html
+%endif
 
 %files -n python-murano-tests
 %license LICENSE
