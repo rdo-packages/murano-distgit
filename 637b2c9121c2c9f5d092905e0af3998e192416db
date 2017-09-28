@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_30a070f4",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 424
+      },
+      "writtenOn": "2017-09-28T08:34:14Z",
+      "side": 1,
+      "message": "Just wondering, do we need/still need DEBUG on here?\n\nI\u0027ve not seen this anywhere else...",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 15
+      },
+      "revId": "637b2c9121c2c9f5d092905e0af3998e192416db",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
