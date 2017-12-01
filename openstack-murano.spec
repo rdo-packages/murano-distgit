@@ -205,6 +205,9 @@ install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/mu
 pushd meta/io.murano
 zip -r %{buildroot}%{_localstatedir}/cache/murano/meta/io.murano.zip .
 popd
+pushd meta/io.murano.applications
+zip -r %{buildroot}%{_localstatedir}/cache/murano/meta/io.murano.applications.zip .
+popd
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
 rm -f %{buildroot}%{python2_sitelib}/%{pypi_name}/locale/*/LC_*/%{pypi_name}*po
