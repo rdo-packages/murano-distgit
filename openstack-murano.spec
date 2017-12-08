@@ -164,11 +164,6 @@ PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/mur
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
-# Create fake egg-info for the tempest plugin
-# TODO switch to %{service} everywhere as in openstack-example.spec
-%global service murano
-%py2_entrypoint %{service} %{service}
-
 # DOCs
 %if 0%{?with_doc}
 
@@ -218,7 +213,6 @@ mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/lo
 %{python2_sitelib}/murano
 %{python2_sitelib}/murano-*.egg-info
 %exclude %{python2_sitelib}/murano/tests
-%exclude %{python2_sitelib}/murano_tempest_tests
 %exclude %{python2_sitelib}/%{service}_tests.egg-info
 %{_bindir}/murano-manage
 %{_bindir}/murano-db-manage
@@ -300,7 +294,5 @@ exit 0
 %files -n python-murano-tests
 %license LICENSE
 %{python2_sitelib}/murano/tests
-%{python2_sitelib}/murano_tempest_tests
-%{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
