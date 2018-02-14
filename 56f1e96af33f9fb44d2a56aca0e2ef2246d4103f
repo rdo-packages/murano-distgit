@@ -22,6 +22,30 @@
       "revId": "56f1e96af33f9fb44d2a56aca0e2ef2246d4103f",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aaa499b_cf864213",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2018-02-14T09:14:15Z",
+      "side": 1,
+      "message": "testtools is only imported in https://github.com/openstack/murano/blob/aa6549028957d6d29bfa43f6e3f2f4d578e8dcb7/murano/engine/system/test_fixture.py\n\nI think this is not used in runtime only for tests?, so i guess python2-testtools is nor really a requirement here.",
+      "parentUuid": "7aaa499b_0fa66ac1",
+      "range": {
+        "startLine": 102,
+        "startChar": 35,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "56f1e96af33f9fb44d2a56aca0e2ef2246d4103f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
