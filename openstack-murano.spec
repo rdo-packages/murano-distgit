@@ -25,29 +25,29 @@ BuildArch:     noarch
 
 BuildRequires: git
 BuildRequires: python2-devel
-BuildRequires: python-setuptools
-BuildRequires: python-jsonschema >= 2.0.0
-BuildRequires: python-keystonemiddleware
-BuildRequires: python-oslo-config
-BuildRequires: python-oslo-db
-BuildRequires: python-oslo-i18n
-BuildRequires: python-oslo-log
-BuildRequires: python-oslo-messaging
-BuildRequires: python-oslo-middleware
-BuildRequires: python-oslo-policy
-BuildRequires: python-oslo-serialization
-BuildRequires: python-oslo-service
-BuildRequires: python-openstackdocstheme
-BuildRequires: python-pbr >= 2.0.0
-BuildRequires: python-routes >= 2.3.1
-BuildRequires: python-sphinx
+BuildRequires: python2-setuptools
+BuildRequires: python2-jsonschema >= 2.6.0
+BuildRequires: python2-keystonemiddleware
+BuildRequires: python2-oslo-config
+BuildRequires: python2-oslo-db
+BuildRequires: python2-oslo-i18n
+BuildRequires: python2-oslo-log
+BuildRequires: python2-oslo-messaging
+BuildRequires: python2-oslo-middleware
+BuildRequires: python2-oslo-policy
+BuildRequires: python2-oslo-serialization
+BuildRequires: python2-oslo-service
+BuildRequires: python2-openstackdocstheme
+BuildRequires: python2-pbr >= 2.0.0
+BuildRequires: python2-routes >= 2.3.1
+BuildRequires: python2-sphinx
 BuildRequires: python-sphinxcontrib-httpdomain
-BuildRequires: python-castellan
+BuildRequires: python2-castellan
 BuildRequires: pyOpenSSL
 BuildRequires: systemd
 BuildRequires: openstack-macros
 # Required to compile translation files
-BuildRequires: python-babel
+BuildRequires: python2-babel
 
 %description
 Murano Project introduces an application catalog service
@@ -55,49 +55,50 @@ Murano Project introduces an application catalog service
 # MURANO-COMMON
 %package common
 Summary: Murano common
-Requires:      python-alembic >= 0.8.7
-Requires:      python-babel >= 2.3.4
-Requires:      python-debtcollector >= 1.2.0
-Requires:      python-eventlet >= 0.18.2
-Requires:      python-iso8601 >= 0.1.9
-Requires:      python-jsonpatch >= 1.1
-Requires:      python-jsonschema >= 2.0.0
-Requires:      python-keystonemiddleware >= 4.12.0
-Requires:      python-keystoneauth1 >= 3.1.0
-Requires:      python-kombu >= 1:4.0.0
-Requires:      python-netaddr >= 0.7.13
-Requires:      python-oslo-concurrency >= 3.8.0
-Requires:      python-oslo-config >= 2:4.0.0
-Requires:      python-oslo-context >= 2.14.0
-Requires:      python-oslo-db >= 4.24.0
-Requires:      python-oslo-i18n >= 2.1.0
-Requires:      python-oslo-log >= 3.22.0
-Requires:      python-oslo-messaging >= 5.24.2
-Requires:      python-oslo-middleware >= 3.27.0
-Requires:      python-oslo-policy >= 1.23.0
-Requires:      python-oslo-serialization >= 1.10.0
-Requires:      python-oslo-service >= 1.10.0
-Requires:      python-oslo-utils >= 3.20.0
+Requires:      python2-alembic >= 0.8.10
+Requires:      python2-babel >= 2.3.4
+Requires:      python2-debtcollector >= 1.2.0
+Requires:      python2-eventlet >= 0.18.2
+Requires:      python2-iso8601 >= 0.1.9
+Requires:      python2-jsonpatch >= 1.16
+Requires:      python2-jsonschema >= 2.6.0
+Requires:      python2-keystonemiddleware >= 4.17.0
+Requires:      python2-keystoneauth1 >= 3.3.0
+Requires:      python2-kombu >= 1:4.0.0
+Requires:      python2-netaddr >= 0.7.18
+Requires:      python2-oslo-concurrency >= 3.25.0
+Requires:      python2-oslo-config >= 2:5.1.0
+Requires:      python2-oslo-context >= 2.19.2
+Requires:      python2-oslo-db >= 4.27.0
+Requires:      python2-oslo-i18n >= 3.15.3
+Requires:      python2-oslo-log >= 3.36.0
+Requires:      python2-oslo-messaging >= 5.29.0
+Requires:      python2-oslo-middleware >= 3.31.0
+Requires:      python2-oslo-policy >= 1.30.0
+Requires:      python2-oslo-serialization >= 2.18.0
+Requires:      python2-oslo-service >= 1.24.0
+Requires:      python2-oslo-utils >= 3.33.0
 Requires:      python-paste
 Requires:      python-paste-deploy >= 1.5.0
-Requires:      python-pbr >= 2.0.0
-Requires:      python-psutil >= 3.2.2
-Requires:      python-congressclient >= 1.3.0
-Requires:      python-heatclient >= 1.6.1
-Requires:      python-keystoneclient >= 1:3.8.0
-Requires:      python-mistralclient >= 3.1.0
-Requires:      python-muranoclient >= 0.8.2
-Requires:      python-neutronclient >= 6.3.0
+Requires:      python2-pbr >= 2.0.0
+Requires:      python2-psutil >= 3.2.2
+Requires:      python2-congressclient >= 1.9.0
+Requires:      python2-heatclient >= 1.10.0
+Requires:      python2-keystoneclient >= 1:3.8.0
+Requires:      python2-mistralclient >= 3.1.0
+Requires:      python2-muranoclient >= 0.8.2
+Requires:      python2-neutronclient >= 6.3.0
 Requires:      PyYAML >= 3.10
-Requires:      python-routes >= 2.3.1
+Requires:      python2-routes >= 2.3.1
 Requires:      python-semantic_version >= 2.3.1
-Requires:      python-six >= 1.9.0
-Requires:      python-stevedore >= 1.20.0
-Requires:      python-sqlalchemy >= 1.0.10
-Requires:      python-tenacity >= 3.2.1
+Requires:      python2-six >= 1.10.0
+Requires:      python2-stevedore >= 1.20.0
+Requires:      python2-sqlalchemy >= 1.0.10
+Requires:      python2-tenacity >= 3.2.1
 Requires:      python-webob >= 1.7.1
-Requires:      python-yaql >= 1.1.0
-Requires:      python-castellan >= 0.7.0
+Requires:      python2-yaql >= 1.1.3
+Requires:      python2-castellan >= 0.16.0
+Requires:      python2-cryptography >= 1.7.2
 Requires:      %{name}-doc = %{version}-%{release}
 
 %description common
