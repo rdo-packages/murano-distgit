@@ -1,3 +1,4 @@
+%global milestone .0rc1
 %global pypi_name murano
 
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
@@ -9,13 +10,17 @@
 %endif
 
 Name:          openstack-%{pypi_name}
-Version:       XXX
-Release:       XXX
+Version:       5.0.0
+Release:       0.1%{?milestone}%{?dist}
 Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
 URL:           https://pypi.python.org/pypi/murano
 Source0:       https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+#
+# patches_base=5.0.0.0rc1
+#
+
 Source1:       openstack-murano-api.service
 Source2:       openstack-murano-engine.service
 Source3:       openstack-murano.logrotate
@@ -297,3 +302,6 @@ exit 0
 %{python2_sitelib}/murano/tests
 
 %changelog
+* Mon Feb 19 2018 RDO <dev@lists.rdoproject.org> 5.0.0-0.1.0rc1
+- Update to 5.0.0.0rc1
+
