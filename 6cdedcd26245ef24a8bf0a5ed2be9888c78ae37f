@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab14d0d_93c18783",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2018-03-19T09:14:39Z",
+      "side": 1,
+      "message": "murano :)",
+      "range": {
+        "startLine": 195,
+        "startChar": 46,
+        "endLine": 195,
+        "endChar": 52
+      },
+      "revId": "6cdedcd26245ef24a8bf0a5ed2be9888c78ae37f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
