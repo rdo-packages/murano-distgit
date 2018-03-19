@@ -188,10 +188,12 @@ install -p -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/murano
 cd %{_builddir}/%{pypi_name}-%{upstream_version} && oslo-config-generator --config-file ./etc/oslo-config-generator/murano.conf --output-file %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano.conf.sample
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano.conf.sample %{buildroot}%{_sysconfdir}/murano/murano.conf
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/netconfig.yaml.sample %{buildroot}%{_sysconfdir}/murano/netconfig.yaml.sample
-install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-paste.ini %{buildroot}%{_sysconfdir}/murano/murano-paste.ini
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/logging.conf.sample %{buildroot}%{_sysconfdir}/murano/logging.conf
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-cfapi.conf.sample %{buildroot}%{_sysconfdir}/murano/murano-cfapi.conf
-install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano-cfapi-paste.ini %{buildroot}%{_sysconfdir}/murano/murano-cfapi-paste.ini
+mv %{buildroot}%{_prefix}/etc/%{pypi_name}/murano-paste.ini %{buildroot}%{_sysconfdir}/%{pypi_name}/murano-paste.ini
+mv %{buildroot}%{_prefix}/etc/%{pypi_name}/murano-cfapi-paste.ini %{buildroot}%{_sysconfdir}/%{pypi_name}/murano-cfapi-paste.ini
+# Remove duplicate config files under /usr/etc/senlin
+rmdir %{buildroot}%{_prefix}/etc/%{pypi_name}
 
 # Creating murano core library archive(murano meta packages written in muranoPL with execution plan main minimal logic)
 pushd meta/io.murano
