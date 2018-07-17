@@ -168,7 +168,8 @@ PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/mur
 # DOCs
 %if 0%{?with_doc}
 
-SPHINX_DEBUG=1 %{__python2} setup.py build_sphinx -b html
+export PYTHONPATH=.
+SPHINX_DEBUG=1 sphinx-build -b html doc/source doc/build/html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 
