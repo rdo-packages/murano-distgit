@@ -55,7 +55,7 @@ Murano Project introduces an application catalog service
 # MURANO-COMMON
 %package common
 Summary: Murano common
-Requires:      python2-alembic >= 0.8.10
+Requires:      python2-alembic >= 0.9.6
 Requires:      python2-babel >= 2.3.4
 Requires:      python2-debtcollector >= 1.2.0
 Requires:      python2-eventlet >= 0.18.2
@@ -63,11 +63,11 @@ Requires:      python2-iso8601 >= 0.1.9
 Requires:      python2-jsonpatch >= 1.16
 Requires:      python2-jsonschema >= 2.6.0
 Requires:      python2-keystonemiddleware >= 4.17.0
-Requires:      python2-keystoneauth1 >= 3.3.0
+Requires:      python2-keystoneauth1 >= 3.4.0
 Requires:      python2-kombu >= 1:4.0.0
 Requires:      python2-netaddr >= 0.7.18
-Requires:      python2-oslo-concurrency >= 3.25.0
-Requires:      python2-oslo-config >= 2:5.1.0
+Requires:      python2-oslo-concurrency >= 3.26.0
+Requires:      python2-oslo-config >= 2:5.2.0
 Requires:      python2-oslo-context >= 2.19.2
 Requires:      python2-oslo-db >= 4.27.0
 Requires:      python2-oslo-i18n >= 3.15.3
@@ -87,18 +87,18 @@ Requires:      python2-heatclient >= 1.10.0
 Requires:      python2-keystoneclient >= 1:3.8.0
 Requires:      python2-mistralclient >= 3.1.0
 Requires:      python2-muranoclient >= 0.8.2
-Requires:      python2-neutronclient >= 6.3.0
+Requires:      python2-neutronclient >= 6.7.0
 Requires:      PyYAML >= 3.10
 Requires:      python2-routes >= 2.3.1
 Requires:      python-semantic_version >= 2.3.1
 Requires:      python2-six >= 1.10.0
 Requires:      python2-stevedore >= 1.20.0
 Requires:      python2-sqlalchemy >= 1.0.10
-Requires:      python2-tenacity >= 3.2.1
+Requires:      python2-tenacity >= 4.4.0
 Requires:      python-webob >= 1.7.1
 Requires:      python2-yaql >= 1.1.3
 Requires:      python2-castellan >= 0.16.0
-Requires:      python2-cryptography >= 1.7.2
+Requires:      python2-cryptography >= 2.1
 Requires:      %{name}-doc = %{version}-%{release}
 
 %description common
