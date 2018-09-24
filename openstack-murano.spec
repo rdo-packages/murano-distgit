@@ -1,3 +1,14 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
 %global pypi_name murano
 
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
@@ -24,30 +35,36 @@ Source4:       openstack-murano-cf-api.service
 BuildArch:     noarch
 
 BuildRequires: git
-BuildRequires: python2-devel
-BuildRequires: python2-setuptools
-BuildRequires: python2-jsonschema >= 2.6.0
-BuildRequires: python2-keystonemiddleware
-BuildRequires: python2-oslo-config
-BuildRequires: python2-oslo-db
-BuildRequires: python2-oslo-i18n
-BuildRequires: python2-oslo-log
-BuildRequires: python2-oslo-messaging
-BuildRequires: python2-oslo-middleware
-BuildRequires: python2-oslo-policy
-BuildRequires: python2-oslo-serialization
-BuildRequires: python2-oslo-service
-BuildRequires: python2-openstackdocstheme
-BuildRequires: python2-pbr >= 2.0.0
-BuildRequires: python2-routes >= 2.3.1
-BuildRequires: python2-sphinx
-BuildRequires: python-sphinxcontrib-httpdomain
-BuildRequires: python2-castellan
-BuildRequires: pyOpenSSL
+BuildRequires: python%{pyver}-devel
+BuildRequires: python%{pyver}-setuptools
+BuildRequires: python%{pyver}-jsonschema >= 2.6.0
+BuildRequires: python%{pyver}-keystonemiddleware
+BuildRequires: python%{pyver}-oslo-config
+BuildRequires: python%{pyver}-oslo-db
+BuildRequires: python%{pyver}-oslo-i18n
+BuildRequires: python%{pyver}-oslo-log
+BuildRequires: python%{pyver}-oslo-messaging
+BuildRequires: python%{pyver}-oslo-middleware
+BuildRequires: python%{pyver}-oslo-policy
+BuildRequires: python%{pyver}-oslo-serialization
+BuildRequires: python%{pyver}-oslo-service
+BuildRequires: python%{pyver}-openstackdocstheme
+BuildRequires: python%{pyver}-pbr >= 2.0.0
+BuildRequires: python%{pyver}-routes >= 2.3.1
+BuildRequires: python%{pyver}-sphinx
+BuildRequires: python%{pyver}-castellan
+BuildRequires: python%{pyver}-pyOpenSSL
 BuildRequires: systemd
 BuildRequires: openstack-macros
 # Required to compile translation files
-BuildRequires: python2-babel
+BuildRequires: python%{pyver}-babel
+
+# Handle python2 exception
+%if %{pyver} == 2
+BuildRequires: python-sphinxcontrib-httpdomain
+%else
+BuildRequires: python%{pyver}-sphinxcontrib-httpdomain
+%endif
 
 %description
 Murano Project introduces an application catalog service
@@ -55,51 +72,60 @@ Murano Project introduces an application catalog service
 # MURANO-COMMON
 %package common
 Summary: Murano common
-Requires:      python2-alembic >= 0.9.6
-Requires:      python2-babel >= 2.3.4
-Requires:      python2-debtcollector >= 1.2.0
-Requires:      python2-eventlet >= 0.18.2
-Requires:      python2-iso8601 >= 0.1.9
-Requires:      python2-jsonpatch >= 1.16
-Requires:      python2-jsonschema >= 2.6.0
-Requires:      python2-keystonemiddleware >= 4.17.0
-Requires:      python2-keystoneauth1 >= 3.4.0
-Requires:      python2-kombu >= 1:4.0.0
-Requires:      python2-netaddr >= 0.7.18
-Requires:      python2-oslo-concurrency >= 3.26.0
-Requires:      python2-oslo-config >= 2:5.2.0
-Requires:      python2-oslo-context >= 2.19.2
-Requires:      python2-oslo-db >= 4.27.0
-Requires:      python2-oslo-i18n >= 3.15.3
-Requires:      python2-oslo-log >= 3.36.0
-Requires:      python2-oslo-messaging >= 5.29.0
-Requires:      python2-oslo-middleware >= 3.31.0
-Requires:      python2-oslo-policy >= 1.30.0
-Requires:      python2-oslo-serialization >= 2.18.0
-Requires:      python2-oslo-service >= 1.24.0
-Requires:      python2-oslo-utils >= 3.33.0
+Requires:      python%{pyver}-alembic >= 0.9.6
+Requires:      python%{pyver}-babel >= 2.3.4
+Requires:      python%{pyver}-debtcollector >= 1.2.0
+Requires:      python%{pyver}-eventlet >= 0.18.2
+Requires:      python%{pyver}-iso8601 >= 0.1.9
+Requires:      python%{pyver}-jsonpatch >= 1.16
+Requires:      python%{pyver}-jsonschema >= 2.6.0
+Requires:      python%{pyver}-keystonemiddleware >= 4.17.0
+Requires:      python%{pyver}-keystoneauth1 >= 3.4.0
+Requires:      python%{pyver}-kombu >= 1:4.0.0
+Requires:      python%{pyver}-netaddr >= 0.7.18
+Requires:      python%{pyver}-oslo-concurrency >= 3.26.0
+Requires:      python%{pyver}-oslo-config >= 2:5.2.0
+Requires:      python%{pyver}-oslo-context >= 2.19.2
+Requires:      python%{pyver}-oslo-db >= 4.27.0
+Requires:      python%{pyver}-oslo-i18n >= 3.15.3
+Requires:      python%{pyver}-oslo-log >= 3.36.0
+Requires:      python%{pyver}-oslo-messaging >= 5.29.0
+Requires:      python%{pyver}-oslo-middleware >= 3.31.0
+Requires:      python%{pyver}-oslo-policy >= 1.30.0
+Requires:      python%{pyver}-oslo-serialization >= 2.18.0
+Requires:      python%{pyver}-oslo-service >= 1.24.0
+Requires:      python%{pyver}-oslo-utils >= 3.33.0
+Requires:      python%{pyver}-pbr >= 2.0.0
+Requires:      python%{pyver}-psutil >= 3.2.2
+Requires:      python%{pyver}-congressclient >= 1.9.0
+Requires:      python%{pyver}-heatclient >= 1.10.0
+Requires:      python%{pyver}-keystoneclient >= 1:3.8.0
+Requires:      python%{pyver}-mistralclient >= 3.1.0
+Requires:      python%{pyver}-muranoclient >= 0.8.2
+Requires:      python%{pyver}-neutronclient >= 6.7.0
+Requires:      python%{pyver}-routes >= 2.3.1
+Requires:      python%{pyver}-six >= 1.10.0
+Requires:      python%{pyver}-stevedore >= 1.20.0
+Requires:      python%{pyver}-sqlalchemy >= 1.0.10
+Requires:      python%{pyver}-tenacity >= 4.4.0
+Requires:      python%{pyver}-webob >= 1.7.1
+Requires:      python%{pyver}-yaql >= 1.1.3
+Requires:      python%{pyver}-castellan >= 0.16.0
+Requires:      python%{pyver}-cryptography >= 2.1
+Requires:      %{name}-doc = %{version}-%{release}
+
+# Handle python2 exception
+%if %{pyver} == 2
 Requires:      python-paste
 Requires:      python-paste-deploy >= 1.5.0
-Requires:      python2-pbr >= 2.0.0
-Requires:      python2-psutil >= 3.2.2
-Requires:      python2-congressclient >= 1.9.0
-Requires:      python2-heatclient >= 1.10.0
-Requires:      python2-keystoneclient >= 1:3.8.0
-Requires:      python2-mistralclient >= 3.1.0
-Requires:      python2-muranoclient >= 0.8.2
-Requires:      python2-neutronclient >= 6.7.0
 Requires:      PyYAML >= 3.10
-Requires:      python2-routes >= 2.3.1
 Requires:      python-semantic_version >= 2.3.1
-Requires:      python2-six >= 1.10.0
-Requires:      python2-stevedore >= 1.20.0
-Requires:      python2-sqlalchemy >= 1.0.10
-Requires:      python2-tenacity >= 4.4.0
-Requires:      python-webob >= 1.7.1
-Requires:      python2-yaql >= 1.1.3
-Requires:      python2-castellan >= 0.16.0
-Requires:      python2-cryptography >= 2.1
-Requires:      %{name}-doc = %{version}-%{release}
+%else
+Requires:      python%{pyver}-paste
+Requires:      python%{pyver}-paste-deploy >= 1.5.0
+Requires:      python%{pyver}-PyYAML >= 3.10
+Requires:      python%{pyver}-semantic_version >= 2.3.1
+%endif
 
 %description common
 Components common to all OpenStack Murano services
@@ -139,11 +165,12 @@ Summary: Documentation for OpenStack Murano services
 This package contains documentation files for Murano.
 %endif
 
-%package -n python-murano-tests
+%package -n python%{pyver}-murano-tests
 Summary:        Murano tests
+%{?python_provide:%python_provide python%{pyver}-murano-tests}
 Requires:       %{name}-common = %{version}-%{release}
 
-%description -n python-murano-tests
+%description -n python%{pyver}-murano-tests
 This package contains the murano test files.
 
 %prep
@@ -154,22 +181,22 @@ This package contains the murano test files.
 %py_req_cleanup
 
 %build
-%{__python2} setup.py build
+%{pyver_build}
 # Generate i18n files
-%{__python2} setup.py compile_catalog -d build/lib/%{pypi_name}/locale
+%{pyver_bin} setup.py compile_catalog -d build/lib/%{pypi_name}/locale
 # Generate sample config and add the current directory to PYTHONPATH so
-# oslo-config-generator doesn't skip heat's entry points.
-PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/murano.conf
-PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/murano-cfapi.conf
+# oslo-config-generator-%{pyver} doesn't skip heat's entry points.
+PYTHONPATH=. oslo-config-generator-%{pyver} --config-file=./etc/oslo-config-generator/murano.conf
+PYTHONPATH=. oslo-config-generator-%{pyver} --config-file=./etc/oslo-config-generator/murano-cfapi.conf
 
 %install
-%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
+%{pyver_install}
 
 # DOCs
 %if 0%{?with_doc}
 
 export PYTHONPATH=.
-SPHINX_DEBUG=1 sphinx-build -b html doc/source doc/build/html
+SPHINX_DEBUG=1 sphinx-build-%{pyver} -b html doc/source doc/build/html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 
@@ -186,7 +213,7 @@ install -p -D -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/murano-cf-api.service
 # install logrotate rules
 install -p -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/murano
 # install default config files
-cd %{_builddir}/%{pypi_name}-%{upstream_version} && oslo-config-generator --config-file ./etc/oslo-config-generator/murano.conf --output-file %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano.conf.sample
+cd %{_builddir}/%{pypi_name}-%{upstream_version} && oslo-config-generator-%{pyver} --config-file ./etc/oslo-config-generator/murano.conf --output-file %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano.conf.sample
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/murano.conf.sample %{buildroot}%{_sysconfdir}/murano/murano.conf
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/netconfig.yaml.sample %{buildroot}%{_sysconfdir}/murano/netconfig.yaml.sample
 install -p -D -m 640 %{_builddir}/%{pypi_name}-%{upstream_version}/etc/murano/logging.conf.sample %{buildroot}%{_sysconfdir}/murano/logging.conf
@@ -205,19 +232,19 @@ zip -r %{buildroot}%{_localstatedir}/cache/murano/meta/io.murano.applications.zi
 popd
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
-rm -f %{buildroot}%{python2_sitelib}/%{pypi_name}/locale/*/LC_*/%{pypi_name}*po
-rm -f %{buildroot}%{python2_sitelib}/%{pypi_name}/locale/*pot
-mv %{buildroot}%{python2_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/locale
+rm -f %{buildroot}%{pyver_sitelib}/%{pypi_name}/locale/*/LC_*/%{pypi_name}*po
+rm -f %{buildroot}%{pyver_sitelib}/%{pypi_name}/locale/*pot
+mv %{buildroot}%{pyver_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/locale
 
 # Find language files
 %find_lang %{pypi_name} --all-name
 
 %files common -f %{pypi_name}.lang
 %license LICENSE
-%{python2_sitelib}/murano
-%{python2_sitelib}/murano-*.egg-info
-%exclude %{python2_sitelib}/murano/tests
-%exclude %{python2_sitelib}/%{service}_tests.egg-info
+%{pyver_sitelib}/murano
+%{pyver_sitelib}/murano-*.egg-info
+%exclude %{pyver_sitelib}/murano/tests
+%exclude %{pyver_sitelib}/%{service}_tests.egg-info
 %{_bindir}/murano-manage
 %{_bindir}/murano-db-manage
 %{_bindir}/murano-test-runner
@@ -295,8 +322,8 @@ exit 0
 %doc doc/build/html
 %endif
 
-%files -n python-murano-tests
+%files -n python%{pyver}-murano-tests
 %license LICENSE
-%{python2_sitelib}/murano/tests
+%{pyver_sitelib}/murano/tests
 
 %changelog
