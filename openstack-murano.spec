@@ -94,6 +94,7 @@ Requires:      python%{pyver}-oslo-middleware >= 3.31.0
 Requires:      python%{pyver}-oslo-policy >= 1.30.0
 Requires:      python%{pyver}-oslo-serialization >= 2.18.0
 Requires:      python%{pyver}-oslo-service >= 1.24.0
+Requires:      python%{pyver}-oslo-upgradecheck >= 0.1.0
 Requires:      python%{pyver}-oslo-utils >= 3.33.0
 Requires:      python%{pyver}-pbr >= 2.0.0
 Requires:      python%{pyver}-psutil >= 3.2.2
@@ -247,6 +248,7 @@ mv %{buildroot}%{pyver_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/loca
 %exclude %{pyver_sitelib}/%{service}_tests.egg-info
 %{_bindir}/murano-manage
 %{_bindir}/murano-db-manage
+%{_bindir}/murano-status
 %{_bindir}/murano-test-runner
 %{_bindir}/murano-cfapi-db-manage
 %dir %attr(0750,murano,root) %{_localstatedir}/log/murano
