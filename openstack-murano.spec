@@ -9,7 +9,7 @@
 %endif
 
 Name:          openstack-%{pypi_name}
-Version:       4.0.0
+Version:       4.0.1
 Release:       1%{?dist}
 Summary:       OpenStack Murano Service
 
@@ -302,6 +302,9 @@ exit 0
 %{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
+* Wed Apr 17 2019 RDO <dev@lists.rdoproject.org> 4.0.1-1
+- Update to 4.0.1
+
 * Wed Aug 30 2017 rdo-trunk <javier.pena@redhat.com> 4.0.0-1
 - Update to 4.0.0
 
