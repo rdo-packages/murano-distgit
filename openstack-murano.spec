@@ -113,7 +113,6 @@ Requires:      python%{pyver}-webob >= 1.7.1
 Requires:      python%{pyver}-yaql >= 1.1.3
 Requires:      python%{pyver}-castellan >= 0.16.0
 Requires:      python%{pyver}-cryptography >= 2.1
-Requires:      %{name}-doc = %{version}-%{release}
 
 # Handle python2 exception
 %if %{pyver} == 2
