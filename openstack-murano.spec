@@ -1,3 +1,4 @@
+%global milestone .0rc1
 # Macros for py2/py3 compatibility
 %if 0%{?fedora} || 0%{?rhel} > 7
 %global pyver %{python3_pkgversion}
@@ -20,13 +21,17 @@
 %endif
 
 Name:          openstack-%{pypi_name}
-Version:       XXX
-Release:       XXX
+Version:       8.0.0
+Release:       0.1%{?milestone}%{?dist}
 Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
 URL:           https://pypi.python.org/pypi/murano
 Source0:       https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+#
+# patches_base=8.0.0.0rc1
+#
+
 Source1:       openstack-murano-api.service
 Source2:       openstack-murano-engine.service
 Source3:       openstack-murano.logrotate
@@ -328,3 +333,6 @@ exit 0
 %{pyver_sitelib}/murano/tests
 
 %changelog
+* Mon Sep 30 2019 RDO <dev@lists.rdoproject.org> 8.0.0-0.1.0rc1
+- Update to 8.0.0.0rc1
+
