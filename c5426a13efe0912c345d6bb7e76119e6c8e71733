@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44e914ec_0cf2327a",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-04-28T14:28:59Z",
+      "side": 1,
+      "message": "these can be cleaned up",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "c5426a13efe0912c345d6bb7e76119e6c8e71733",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33083b92_d455b89f",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-04-28T14:28:59Z",
+      "side": 1,
+      "message": "can be cleaned up",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 39
+      },
+      "revId": "c5426a13efe0912c345d6bb7e76119e6c8e71733",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
