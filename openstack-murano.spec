@@ -152,7 +152,7 @@ This package contains the murano test files.
 %build
 %{py3_build}
 # Generate i18n files
-%{__python3} setup.py compile_catalog -d build/lib/%{pypi_name}/locale
+%{__python3} setup.py compile_catalog -d build/lib/%{pypi_name}/locale --domain murano
 # Generate sample config and add the current directory to PYTHONPATH so
 # oslo-config-generator doesn't skip heat's entry points.
 PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/murano.conf
