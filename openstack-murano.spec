@@ -76,7 +76,6 @@ Requires:      python3-oslo-upgradecheck >= 0.1.0
 Requires:      python3-oslo-utils >= 3.33.0
 Requires:      python3-pbr >= 2.0.0
 Requires:      python3-psutil >= 3.2.2
-Requires:      python3-congressclient >= 1.9.0
 Requires:      python3-heatclient >= 1.10.0
 Requires:      python3-keystoneclient >= 1:3.8.0
 Requires:      python3-mistralclient >= 3.1.0
