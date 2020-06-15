@@ -20,7 +20,7 @@
 %endif
 
 Name:          openstack-%{pypi_name}
-Version:       8.0.0
+Version:       8.1.0
 Release:       1%{?dist}
 Summary:       OpenStack Murano Service
 
@@ -330,6 +330,9 @@ exit 0
 %{pyver_sitelib}/murano/tests
 
 %changelog
+* Mon Jun 15 2020 RDO <dev@lists.rdoproject.org> 8.1.0-1
+- Update to 8.1.0
+
 * Wed Oct 16 2019 RDO <dev@lists.rdoproject.org> 8.0.0-1
 - Update to 8.0.0
 
