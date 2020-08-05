@@ -339,3 +339,4 @@ exit 0
 * Mon Sep 30 2019 RDO <dev@lists.rdoproject.org> 8.0.0-0.1.0rc1
 - Update to 8.0.0.0rc1
 
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/murano/commit/?id=4f698865318df4e72b7521aaad34fc0d2ff22dac
