@@ -87,7 +87,7 @@ Requires:      python3-sqlalchemy >= 1.0.10
 Requires:      python3-tenacity >= 4.4.0
 Requires:      python3-webob >= 1.7.1
 Requires:      python3-yaql >= 1.1.3
-Requires:      python3-castellan >= 0.16.0
+Requires:      python3-castellan >= 0.18.0
 Requires:      python3-cryptography >= 2.1
 
 Requires:      python3-paste
