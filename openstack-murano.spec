@@ -1,3 +1,5 @@
+%{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
+%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %global pypi_name murano
 
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
@@ -15,8 +17,18 @@ Source1:       openstack-murano-api.service
 Source2:       openstack-murano-engine.service
 Source3:       openstack-murano.logrotate
 Source4:       openstack-murano-cf-api.service
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+Source101:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz.asc
+Source102:        https://releases.openstack.org/_static/%{sources_gpg_sign}.txt
+%endif
 
 BuildArch:     noarch
+
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+BuildRequires:  /usr/bin/gpgv2
+%endif
 
 BuildRequires: git
 BuildRequires: python3-devel
@@ -142,6 +154,10 @@ Requires:       %{name}-common = %{version}-%{release}
 This package contains the murano test files.
 
 %prep
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+%{gpgverify}  --keyring=%{SOURCE102} --signature=%{SOURCE101} --data=%{SOURCE0}
+%endif
 %autosetup -S git -n %{pypi_name}-%{upstream_version}
 
 # Remove the requirements file so that pbr hooks don't add it
