@@ -30,7 +30,7 @@ BuildArch:     noarch
 BuildRequires:  /usr/bin/gpgv2
 %endif
 
-BuildRequires: git
+BuildRequires: git-core
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: python3-jsonschema >= 2.6.0
