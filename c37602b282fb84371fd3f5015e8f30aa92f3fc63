@@ -22,6 +22,30 @@
       "revId": "c37602b282fb84371fd3f5015e8f30aa92f3fc63",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a35cb2_9242ddf2",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2021-03-18T16:35:15Z",
+      "side": 1,
+      "message": "Right, I moved it",
+      "parentUuid": "90138ffa_71f03981",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 41
+      },
+      "revId": "c37602b282fb84371fd3f5015e8f30aa92f3fc63",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": true
     }
   ]
 }
