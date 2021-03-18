@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90138ffa_71f03981",
+        "filename": "openstack-murano.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2021-03-18T15:47:48Z",
+      "side": 1,
+      "message": "i think testtools is actually not ta runtime req. It\u0027s imported in https://github.com/openstack/murano/blob/8f5e0106732bf4f7af39f2d9a9b752b288ed90ea/murano/engine/system/test_fixture.py#L16 but i think that\u0027s only used for tests.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 41
+      },
+      "revId": "c37602b282fb84371fd3f5015e8f30aa92f3fc63",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": true
+    }
+  ]
+}
