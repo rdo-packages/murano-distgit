@@ -1,18 +1,23 @@
+%global milestone .0rc1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0x5d2d1e4fb8d38e6af76c50d53d4fec30cf5ce3da
 %global pypi_name murano
 
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:          openstack-%{pypi_name}
-Version:       XXX
-Release:       XXX
+Version:       11.0.0
+Release:       0.1%{?milestone}%{?dist}
 Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
 URL:           https://pypi.python.org/pypi/murano
 Source0:       https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+#
+# patches_base=11.0.0.0rc1
+#
+
 Source1:       openstack-murano-api.service
 Source2:       openstack-murano-engine.service
 Source3:       openstack-murano.logrotate
@@ -314,3 +319,6 @@ exit 0
 %{python3_sitelib}/murano/tests
 
 %changelog
+* Fri Mar 26 2021 RDO <dev@lists.rdoproject.org> 11.0.0-0.1.0rc1
+- Update to 11.0.0.0rc1
+
