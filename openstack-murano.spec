@@ -1,4 +1,4 @@
-%global milestone .0rc1
+%global milestone .0rc2
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0x01527a34f0d0080f8a5db8d6eb6c5df21b4b6363
 %global pypi_name murano
@@ -8,15 +8,13 @@
 
 Name:          openstack-%{pypi_name}
 Version:       13.0.0
-Release:       0.1%{?milestone}%{?dist}
+Release:       0.2%{?milestone}%{?dist}
 Summary:       OpenStack Murano Service
 
 License:       ASL 2.0
 URL:           https://pypi.python.org/pypi/murano
 Source0:       https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
-#
-# patches_base=13.0.0.0rc1
-#
+# patches_base=13.0.0.0rc2
 
 Source1:       openstack-murano-api.service
 Source2:       openstack-murano-engine.service
@@ -319,6 +317,9 @@ exit 0
 %{python3_sitelib}/murano/tests
 
 %changelog
+* Tue Mar 29 2022 RDO <dev@lists.rdoproject.org> 13.0.0-0.2.0rc1
+- Update to 13.0.0.0rc2
+
 * Fri Mar 25 2022 RDO <dev@lists.rdoproject.org> 13.0.0-0.1.0rc1
 - Update to 13.0.0.0rc1
 
