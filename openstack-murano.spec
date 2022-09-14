@@ -105,7 +105,7 @@ Requires:      python3-cryptography >= 2.7
 Requires:      python3-paste >= 2.0.2
 Requires:      python3-paste-deploy >= 1.5.0
 Requires:      python3-yaml >= 5.1
-Requires:      python3-semantic_version >= 2.6.0
+Requires:      python3-semantic_version >= 2.8.2
 
 %description common
 Components common to all OpenStack Murano services
