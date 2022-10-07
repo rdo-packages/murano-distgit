@@ -98,6 +98,7 @@ Requires:      python3-neutronclient >= 6.7.0
 Requires:      python3-routes >= 2.3.1
 Requires:      python3-stevedore >= 1.20.0
 Requires:      python3-sqlalchemy >= 1.0.10
+Requires:      python3-sqlalchemy < 1.4.0
 Requires:      python3-tenacity >= 4.12.0
 Requires:      python3-webob >= 1.7.1
 Requires:      python3-yaql >= 1.1.3
