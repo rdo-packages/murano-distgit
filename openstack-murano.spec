@@ -4,13 +4,19 @@
 
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order pylint os-api-ref
+# Exclude sphinx from BRs if docs are disabled
+%if ! 0%{?with_doc}
+%global excluded_brs %{excluded_brs} sphinx openstackdocstheme
+%endif
 
 Name:          openstack-%{pypi_name}
 Version:       XXX
 Release:       XXX
 Summary:       OpenStack Murano Service
 
-License:       ASL 2.0
+License:       Apache-2.0
 URL:           https://pypi.python.org/pypi/murano
 Source0:       https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 Source1:       openstack-murano-api.service
@@ -32,30 +38,9 @@ BuildRequires:  /usr/bin/gpgv2
 
 BuildRequires: git-core
 BuildRequires: python3-devel
-BuildRequires: python3-setuptools
-BuildRequires: python3-jsonschema >= 2.6.0
-BuildRequires: python3-keystonemiddleware
-BuildRequires: python3-oslo-config
-BuildRequires: python3-oslo-db
-BuildRequires: python3-oslo-i18n
-BuildRequires: python3-oslo-log
-BuildRequires: python3-oslo-messaging
-BuildRequires: python3-oslo-middleware
-BuildRequires: python3-oslo-policy
-BuildRequires: python3-oslo-serialization
-BuildRequires: python3-oslo-service
-BuildRequires: python3-openstackdocstheme
-BuildRequires: python3-pbr >= 2.0.0
-BuildRequires: python3-routes >= 2.3.1
-BuildRequires: python3-sphinx
-BuildRequires: python3-castellan
-BuildRequires: python3-pyOpenSSL
+BuildRequires: pyproject-rpm-macros
 BuildRequires: systemd
 BuildRequires: openstack-macros
-# Required to compile translation files
-BuildRequires: python3-babel
-
-BuildRequires: python3-sphinxcontrib-httpdomain
 
 %description
 Murano Project introduces an application catalog service
@@ -63,51 +48,6 @@ Murano Project introduces an application catalog service
 # MURANO-COMMON
 %package common
 Summary: Murano common
-Requires:      python3-alembic >= 0.9.6
-Requires:      python3-babel >= 2.3.4
-Requires:      python3-debtcollector >= 1.2.0
-Requires:      python3-eventlet >= 0.26.0
-Requires:      python3-jsonpatch >= 1.16
-Requires:      python3-jsonschema >= 3.2.0
-Requires:      python3-keystonemiddleware >= 4.17.0
-Requires:      python3-keystoneauth1 >= 3.8.0
-Requires:      python3-kombu >= 1:4.6.1
-Requires:      python3-netaddr >= 0.7.18
-Requires:      python3-oslo-concurrency >= 3.26.0
-Requires:      python3-oslo-config >= 2:6.8.0
-Requires:      python3-oslo-context >= 2.22.0
-Requires:      python3-oslo-db >= 4.44.0
-Requires:      python3-oslo-i18n >= 3.15.3
-Requires:      python3-oslo-log >= 3.36.0
-Requires:      python3-oslo-messaging >= 5.29.0
-Requires:      python3-oslo-middleware >= 3.31.0
-Requires:      python3-oslo-policy >= 3.6.0
-Requires:      python3-oslo-serialization >= 2.18.0
-Requires:      python3-oslo-service >= 1.31.0
-Requires:      python3-oslo-upgradecheck >= 1.3.0
-Requires:      python3-oslo-utils >= 4.5.0
-Requires:      python3-pbr >= 2.0.0
-Requires:      python3-psutil >= 3.2.2
-Requires:      python3-heatclient >= 1.10.0
-Requires:      python3-keystoneclient >= 1:3.17.0
-Requires:      python3-mistralclient >= 3.1.0
-Requires:      python3-muranoclient >= 0.8.2
-Requires:      python3-neutronclient >= 6.7.0
-Requires:      python3-routes >= 2.3.1
-Requires:      python3-stevedore >= 1.20.0
-Requires:      python3-sqlalchemy >= 1.0.10
-Requires:      python3-tenacity >= 4.12.0
-Requires:      python3-webob >= 1.7.1
-Requires:      python3-yaql >= 1.1.3
-Requires:      python3-castellan >= 0.18.0
-Requires:      python3-cryptography >= 2.7
-
-Requires:      python3-paste >= 2.0.2
-Requires:      python3-paste-deploy >= 1.5.0
-Requires:      python3-yaml >= 5.1
-Requires:      python3-semantic_version >= 2.8.2
-Requires:      python3-testtools >= 2.2.0
-
 %description common
 Components common to all OpenStack Murano services
 
@@ -148,9 +88,7 @@ This package contains documentation files for Murano.
 
 %package -n python3-murano-tests
 Summary:        Murano tests
-%{?python_provide:%python_provide python3-murano-tests}
 Requires:       %{name}-common = %{version}-%{release}
-
 Requires:       python3-testtools >= 2.2.0
 
 %description -n python3-murano-tests
@@ -163,27 +101,49 @@ This package contains the murano test files.
 %endif
 %autosetup -S git -n %{pypi_name}-%{upstream_version}
 
-# Remove the requirements file so that pbr hooks don't add it
-# to distutils requires_dist config
-%py_req_cleanup
+
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# do not run linters
+rm -f murano/tests/unit/test_hacking.py
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+# Automatic BR generation
+%generate_buildrequires
+%if 0%{?with_doc}
+  %pyproject_buildrequires -t -e %{default_toxenv},docs
+%else
+  %pyproject_buildrequires -t -e %{default_toxenv}
+%endif
 
 %build
-%{py3_build}
-# Generate i18n files
-%{__python3} setup.py compile_catalog -d build/lib/%{pypi_name}/locale --domain murano
-# Generate sample config and add the current directory to PYTHONPATH so
-# oslo-config-generator doesn't skip heat's entry points.
-PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/murano.conf
-PYTHONPATH=. oslo-config-generator --config-file=./etc/oslo-config-generator/murano-cfapi.conf
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
+
+# Generate sample config files
+PYTHONPATH=%{buildroot}/%{python3_sitelib} oslo-config-generator --config-file=./etc/oslo-config-generator/murano.conf
+PYTHONPATH=%{buildroot}/%{python3_sitelib} oslo-config-generator --config-file=./etc/oslo-config-generator/murano-cfapi.conf
+
+# Generate i18n files
+%{__python3} setup.py compile_catalog -d %{buildroot}%{python3_sitelib}/%{pypi_name}/locale --domain murano
+
 
 # DOCs
 %if 0%{?with_doc}
-
-export PYTHONPATH=.
-SPHINX_DEBUG=1 sphinx-build -b html doc/source doc/build/html
+%tox -e docs
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 
@@ -226,10 +186,13 @@ mv %{buildroot}%{python3_sitelib}/%{pypi_name}/locale %{buildroot}%{_datadir}/lo
 # Find language files
 %find_lang %{pypi_name} --all-name
 
+%check
+%tox -e %{default_toxenv}
+
 %files common -f %{pypi_name}.lang
 %license LICENSE
 %{python3_sitelib}/murano
-%{python3_sitelib}/murano-*.egg-info
+%{python3_sitelib}/murano-*.dist-info
 %exclude %{python3_sitelib}/murano/tests
 %exclude %{python3_sitelib}/%{service}_tests.egg-info
 %{_bindir}/murano-manage
